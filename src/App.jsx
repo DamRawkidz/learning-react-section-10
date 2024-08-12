@@ -5,7 +5,7 @@ import Shop from './components/Shop.jsx';
 import { DUMMY_PRODUCTS } from './dummy-products.js';
 import Product from './components/Product.jsx';
 
-import CartContext from './store/shopping-cart.context.jsx'
+import CartContextProvider from './store/shopping-cart.context.jsx'
 function App() {
   const [shoppingCart, setShoppingCart] = useState({
     items: [],
@@ -62,25 +62,30 @@ function App() {
       }
 
       return {
-        items: updatedItems,
+        items: updatedItems
+
       };
     });
   }
 
+  const ctxValue = {
+    items: shoppingCart,
+    addItemToCart: handleAddItemToCart
+  }
+
+
+
   return (
-    <CartContext.Provider value={{ items: [] }}>
-      <Header
-        cart={shoppingCart}
-        onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
-      />
+    <CartContextProvider>
+      <Header />
       <Shop >
         {DUMMY_PRODUCTS.map((product) => (
           <li key={product.id}>
-            <Product {...product} onAddToCart={handleAddItemToCart} />
+            <Product {...product} />
           </li>
         ))}
       </Shop>
-    </CartContext.Provider>
+    </CartContextProvider>
   );
 }
 
