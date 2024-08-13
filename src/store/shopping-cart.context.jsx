@@ -64,7 +64,6 @@ export default function CartContextProvider({ children }) {
 
             return {
                 items: updatedItems
-
             };
         });
     }
@@ -79,5 +78,3 @@ export default function CartContextProvider({ children }) {
         {children}
     </CartContext.Provider>
 }
-
-// export default CartContext

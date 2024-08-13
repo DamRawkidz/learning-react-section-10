@@ -4,7 +4,7 @@ export default function Cart() {
 
   const { items, onUpdateItemQuantity } = useContext(CartContext)
 
-  const totalPrice = items.items.reduce(
+  const totalPrice = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
@@ -13,7 +13,7 @@ export default function Cart() {
   return (
 
     <div id="cart">
-      {items.items.length === 0 && <p>No items in cart!</p>}
+      {items.length === 0 && <p>No items in cart!</p>}
       {items.length > 0 && (
         <ul id="cart-items">
           {items.map((item) => {
