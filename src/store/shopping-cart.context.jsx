@@ -7,6 +7,7 @@ export const CartContext = createContext({
     addItemToCart: () => { },
     updateItemQuantity: () => { }
 })
+
 function shoppingCartReducer(state, action) {
 
     if (action.type === 'ADD_ITEM') {
